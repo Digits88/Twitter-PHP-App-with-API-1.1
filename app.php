@@ -24,10 +24,10 @@ if (file_exists(dirname(__FILE__).'/TwitterAPIExchange.php')) {
  * @var $aa_setthings array
  */
 $settings = array(
-					'oauth_access_token'        => "216727067-i67hzmwznZnrHXPvI8LJmtofhQmCUKt59861C9jb",
-					'oauth_access_token_secret' => "7bg8wx6TtmLhb3jwXSA70s7n3V7L6t6iskxJdGpTxAS9K",
-					'consumer_key'              => "l7ZqVCFCRdaJLFMJsRKW1ETiJ",
-					'consumer_secret'           => "kMlJiZFAWSdL6YBryQl5AP4Unk5KXid2J6QJkckfUeCCctLOGN"
+					'oauth_access_token'        => "add_here",
+					'oauth_access_token_secret' => "add_here",
+					'consumer_key'              => "add_here",
+					'consumer_secret'           => "add_here"
 );
 
 /**
