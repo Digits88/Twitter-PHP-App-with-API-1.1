@@ -1,7 +1,6 @@
 <?php
 /**
- * AA Twitter APP
- * It gets the latest 20 tweets from user
+ * AA Thank Twitter APP
  * @since 1.0
  */
 
@@ -15,8 +14,8 @@
  * @since    1.0
  */
 
-if (file_exists(dirname(__FILE__).'TwitterAPIExchange.php')) {
-    require_once( dirname(__FILE__).'TwitterAPIExchange.php' );
+if (file_exists(dirname(__FILE__).'/TwitterAPIExchange.php')) {
+    require_once( dirname(__FILE__).'/TwitterAPIExchange.php' );
 }
 
 
@@ -24,35 +23,34 @@ if (file_exists(dirname(__FILE__).'TwitterAPIExchange.php')) {
  * Set access tokens here - see: https://dev.twitter.com/apps/
  * @var $aa_setthings array
  */
-$aa_tt_setthings = array(
-					'oauth_access_token'        => "YOUR_OAUTH_ACCESS_TOKEN",
-					'oauth_access_token_secret' => "YOUR_OAUTH_ACCESS_TOKEN_SECRET",
-					'consumer_key'              => "YOUR_CONSUMER_KEY",
-					'consumer_secret'           => "YOUR_CONSUMER_SECRET"
+$settings = array(
+					'oauth_access_token'        => "216727067-i67hzmwznZnrHXPvI8LJmtofhQmCUKt59861C9jb",
+					'oauth_access_token_secret' => "7bg8wx6TtmLhb3jwXSA70s7n3V7L6t6iskxJdGpTxAS9K",
+					'consumer_key'              => "l7ZqVCFCRdaJLFMJsRKW1ETiJ",
+					'consumer_secret'           => "kMlJiZFAWSdL6YBryQl5AP4Unk5KXid2J6QJkckfUeCCctLOGN"
 );
 
 /**
  * URL and Method
  * @var string
  */
-$aa_tt_url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
-$aa_tt_requestMethod = "GET";
+$url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
+$requestMethod = "GET";
 
-/**
- * Call for getfield
- * @var [type]
- */
+//defaults
 if (isset($_GET['user'])) {$user = $_GET['user'];} else {$user = "mrahmadawais";}
 if (isset($_GET['count'])) {$user = $_GET['count'];} else {$count = 20;}
-$aa_tt_getfield = "?screen_name=$user&count=$count";
+
+//Call for getfield
+$getfield = "?screen_name=$user&count=$count";
 
 //Initialize the API
-$aa_tt_twitter = new TwitterAPIExchange($aa_tt_setthings);
+$aa_tt_twitter = new TwitterAPIExchange($settings);
 
 //Get associated array from json-decode and $assoc = TRUE
-$aa_tt_string = json_decode($twitter->setGetfield($getfield)
-									->buildOauth($url, $requestMethod)
-									->performRequest(),$assoc = TRUE);
+$aa_tt_string = json_decode(	$aa_tt_twitter  ->setGetfield($getfield)
+												->buildOauth($url, $requestMethod)
+												->performRequest(),$assoc = TRUE);
 
 //address the errors if any, and exit
 if( $aa_tt_string["errors"][0]["message"] != "" ) {
@@ -65,7 +63,7 @@ if( $aa_tt_string["errors"][0]["message"] != "" ) {
  */
 foreach($aa_tt_string as $items)
     {
-		echo "Time and Date of Tweet: ".$items['created_at']."<br />";
+		echo "Time and Date of Tweet: ". $items['created_at']."<br />";
 		echo "Tweet                 : ". $items['text']."<br />";
 		echo "Tweeted by            : ". $items['user']['name']."<br />";
 		echo "Screen name           : ". $items['user']['screen_name']."<br />";
