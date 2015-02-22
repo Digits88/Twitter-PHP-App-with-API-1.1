@@ -1,13 +1,9 @@
-<?php
-/**
- * This app gets user tweets upto 20
- * @since  1.0
- */
 
 
 <?php
 /**
  * AA Twitter APP
+ * It gets the latest 20 tweets from user
  * @since 1.0
  */
 
